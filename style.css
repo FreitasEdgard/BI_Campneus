@@ -1,0 +1,73 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    font-family: Arial, sans-serif;
+    color: #ffd700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column; /* Para que os elementos fiquem empilhados */
+    text-align: center;
+}
+
+h1 {
+    color: #ffd700;
+    margin-bottom: 10px; /* Espaço de 10px entre o título e a seção de login */
+}
+
+.container {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    text-align: center;
+    width: 300px;
+}
+
+input {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid #ffd700;
+    background: #333;
+    color: #ffd700;
+}
+
+button {
+    padding: 10px;
+    background: #ffd700;
+    color: #000;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+#welcomeContainer {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#dashboardFrame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    display: none;
+}

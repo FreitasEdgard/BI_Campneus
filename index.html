@@ -3,77 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Simples</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        input {
-            display: block;
-            width: 100%;
-            margin: 10px 0;
-            padding: 8px;
-        }
-        button {
-            padding: 10px;
-            background: blue;
-            color: white;
-            border: none;
-            width: 100%;
-            cursor: pointer;
-        }
-        .hidden {
-            display: none;
-        }
-    </style>
+    <title>Dashboard - Campneus</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Dashboard - Campneus</h1> <!-- Título adicionado -->
     <div class="container" id="loginContainer">
         <h2>Login</h2>
         <input type="text" id="username" placeholder="Usuário">
-        <input type="password" id="password" placeholder="Senha">
+        <input type="password" id="password" placeholder="Senha" onkeydown="checkEnter(event)">
         <button onclick="login()">Entrar</button>
         <p id="error" style="color: red;"></p>
     </div>
-    <div class="container hidden" id="welcomeContainer">
-        <h2>Bem-vindo, <span id="user"></span>!</h2>
-        <iframe title="Painel Gerencial - Campneus Varejo" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=219658f7-388c-4554-b412-afb3120a2676&autoAuth=true&ctid=31266835-6040-4dee-8706-93cc89621604" frameborder="0" allowFullScreen="true"></iframe>
-        <button onclick="logout()">Sair</button>
+    <div id="welcomeContainer">
+        <h2 id="welcomeMessage" class="hidden">Bem-vindo, <span id="user"></span>!</h2>
+        <iframe id="dashboardFrame" title="Painel Gerencial - Campneus Varejo" src="" allowFullScreen="true"></iframe>
+        <button id="logoutButton" class="hidden" onclick="logout()">Sair</button>
     </div>
-    <script>
-        const users = {
-            user: "pass"
-        };
-        
-        function login() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-            
-            if (users[username] === password) {
-                document.getElementById("loginContainer").classList.add("hidden");
-                document.getElementById("welcomeContainer").classList.remove("hidden");
-                document.getElementById("user").textContent = username;
-            } else {
-                document.getElementById("error").textContent = "Usuário ou senha incorretos";
-            }
-        }
-        
-        function logout() {
-            document.getElementById("loginContainer").classList.remove("hidden");
-            document.getElementById("welcomeContainer").classList.add("hidden");
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

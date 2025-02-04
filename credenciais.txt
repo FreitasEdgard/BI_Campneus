@@ -1,6 +1,6 @@
 user:pass
 alex.cancian:pirelli123
-edgard.freitas:pirelli123
+edgard.freitas:pirelli
 carlos.buzatto:pirelli123
 123:123
 admin:admin

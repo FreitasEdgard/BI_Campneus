@@ -1,23 +1,28 @@
 let users = {};
 
-// Função para carregar as credenciais do arquivo txt
 function loadCredentials() {
-    fetch('credenciais.txt')
-        .then(response => response.text())
-        .then(data => {
-            const lines = data.split('\n');
-            lines.forEach(line => {
-                const [username, password] = line.split(':');
-                if (username && password) {
-                    users[username.trim()] = password.trim();
-                }
-            });
-        })
-        .catch(error => console.error('Erro ao carregar credenciais:', error));
-}
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
 
-// Carrega as credenciais ao iniciar a página
-loadCredentials();
+    if (!file) {
+        alert('Por favor, selecione um arquivo.');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        const content = event.target.result;
+        const lines = content.split('\n');
+        lines.forEach(line => {
+            const [username, password] = line.split(':');
+            if (username && password) {
+                users[username.trim()] = password.trim();
+            }
+        });
+        alert('Credenciais carregadas com sucesso!');
+    };
+    reader.readAsText(file);
+}
 
 function login() {
     const username = document.getElementById("username").value;
@@ -30,7 +35,6 @@ function login() {
         document.getElementById("logoutButton").classList.remove("hidden");
         document.getElementById("user").textContent = username;
         
-        // Carrega o iframe e ajusta para tela cheia
         const iframe = document.getElementById("dashboardFrame");
         iframe.src = "https://app.powerbi.com/view?r=eyJrIjoiYjFkMGI5NjQtNTJkZi00OWU3LTlmYWEtMWY0MGMwOGY4Yjc3IiwidCI6IjMxMjY2ODM1LTYwNDAtNGRlZS04NzA2LTkzY2M4OTYyMTYwNCJ9";
         iframe.style.display = "block";
@@ -45,7 +49,6 @@ function logout() {
     document.getElementById("welcomeMessage").classList.add("hidden");
     document.getElementById("logoutButton").classList.add("hidden");
     
-    // Esconde o iframe ao deslogar
     const iframe = document.getElementById("dashboardFrame");
     iframe.src = "";
     iframe.style.display = "none";
